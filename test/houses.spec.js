@@ -33,17 +33,17 @@ describe('Houses Service', () => {
 
   it(
     'should update house in database',
-    () => Houses.update(db, Object.assign({}, { _id: houses[0]._id, title: 'test' }))
+    () => Houses.update(db, Object.assign({}, { _id: houses[0]._id, address: 'test' }))
       .then(res => {
-        res.should.have.property('title').equal('test');
+        res.should.have.property('address').equal('test');
       })
   );
 
   it(
     'should create house in database',
-    () => Houses.create(db, Object.assign({}, { title: 'test' }))
+    () => Houses.create(db, Object.assign({}, { address: 'test' }))
       .then(res => {
-        res.should.have.property('title').equal('test');
+        res.should.have.property('address').equal('test');
       })
   );
 });

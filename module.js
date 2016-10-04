@@ -56,6 +56,11 @@ Promise
                 .then(house => sendResponseToMsg(ch, msg, house)) // send response to queue
                 .then(() => ch.ack(msg)); // notify queue message was processed
               break;
+            case 'houses.delete':
+              Houses.remove(db, data) // logic call
+                .then(house => sendResponseToMsg(ch, msg, house)) // send response to queue
+                .then(() => ch.ack(msg)); // notify queue message was processed
+              break;
             default:
               // if we can't process this message, we should send it back to queue
               ch.nack(msg);
